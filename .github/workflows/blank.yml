@@ -9,8 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Write Data
-      run: echo "ok" > filename.txt
     - name: Trigger Jenkins Job
       env:
         JENKINS_HOSTNAME: ${{ secrets.JENKINS_HOSTNAME }}
