@@ -19,3 +19,5 @@ jobs:
       run: ./.github/scripts/decrypt_secret.sh
       env:
           GIT_SECRET: ${{ secrets.GIT_SECRET }}
+    - name: Read file
+      run: cat $HOME/secrets/my_secret.json
