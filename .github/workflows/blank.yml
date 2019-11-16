@@ -9,15 +9,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Decrypt large secret
-      run: ./.github/scripts/decrypt_secret.sh
+    - name: Write Data
+      run: echo "ok" > filename.txt
+    - name: Trigger Jenkins Job
       env:
-          GIT_SECRET: ${{ secrets.GIT_SECRET }}
-    - name: Read file
-      run: cat $HOME/secrets/my_secret.json
+        JENKINS_HOSTNAME: ${{ secrets.JENKINS_HOSTNAME }}
+        JENKINS_USER_TOKEN: ${{ secrets.JENKINS_USER_TOKEN }}
+        JENKINS_BUILD_TOKEN: ${{ secrets.JENKINS_BUILD_TOKEN }}
+        JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
+      run: |
+        echo "[start] trigger jenkins job"
+        ./.github/scripts/trigger_jenkins.sh
+        echo "[end] finished"

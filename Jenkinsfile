@@ -20,6 +20,7 @@ pipeline {
           docker.image('alpine').inside('--privileged --user root'){
             sh '''apk update
                   env
+                  ls -lah
                '''
           }
         }
