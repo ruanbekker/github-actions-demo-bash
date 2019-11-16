@@ -18,4 +18,4 @@ jobs:
     - name: Decrypt large secret
       run: ./.github/scripts/decrypt_secret.sh
       env:
-          GIT_SECRET: $GIT_SECRET
+          GIT_SECRET: ${{ secrets.GIT_SECRET }}
